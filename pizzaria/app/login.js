@@ -1,8 +1,29 @@
 import { View, Text, Button, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
+import { API_BASE_URL_DB } from "../service/config";
+import Atendente from '../model/atendente';
+import { useState } from "react";
+import { api } from "../service/api_db";
 
 export default function LoginScreen() {
   const router = useRouter();
+  const [n_cracha, setN_cracha] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const fazerLogin = async () => {
+    try {
+      if (!n_cracha || !senha) {
+        alert("Por favor, preencha todos os campos!");
+        return;
+      }
+
+      await api.login(parseInt(n_cracha), senha);
+      router.push("/pedido");
+    } catch (error) {
+      console.error('Erro no login:', error);
+      alert("Erro ao fazer login. Verifique suas credenciais.");
+    }
+  };
 
   return (
     <KeyboardAvoidingView style={styles.background}>
@@ -13,9 +34,11 @@ export default function LoginScreen() {
       <View style={styles.container}>
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Numero do cracha"
           autoCorrect={false}
-          onChangeText={() => {}}
+          keyboardType="numeric"
+          value={n_cracha}
+          onChangeText={setN_cracha}
         />
 
         <TextInput
@@ -23,12 +46,14 @@ export default function LoginScreen() {
           placeholder="Senha"
           autoCorrect={false}
           secureTextEntry
-          onChangeText={() => {}}
+          value={senha}
+          onChangeText={setSenha}
         />
-
-        <TouchableOpacity style={styles.button}>
+        
+        <TouchableOpacity style={styles.button} onPress={fazerLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
+        
 
         <TouchableOpacity onPress={() => router.push("/cadastro")}>
           <Text style={styles.linkText}>Não tem uma conta? Cadastre-se</Text>

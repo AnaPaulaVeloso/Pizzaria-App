@@ -1,8 +1,35 @@
 import { View, Text, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
+import { Atendente } from "../model/atendente";
+import { API_BASE_URL_DB } from "../service/config";
+import { useState } from "react";
+import { api } from "../service/api_db";
 
 export default function CadastroScreen() {
   const router = useRouter();
+
+  const [nome, setNome] = useState('');
+  const [n_cracha, setN_cracha] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const cadastrarAtendente = async () => {
+    try {
+      if (!nome || !n_cracha || !senha) {
+        alert("Por favor, preencha todos os campos!");
+        return;
+      }
+
+      const atendente = new Atendente(nome, n_cracha, senha);
+      console.log('Dados do atendente antes do cadastro:', atendente);
+      
+      await api.inserirAtendente(atendente);
+      alert("Atendente cadastrado com sucesso!");
+      router.push("/login");
+    } catch (error) {
+      console.error('Erro completo:', error);
+      alert("Erro ao cadastrar atendente. Por favor, tente novamente.");
+    }
+  };
 
   return (
     <KeyboardAvoidingView style={styles.background}>
@@ -13,10 +40,9 @@ export default function CadastroScreen() {
       <View style={styles.container}>
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Nome"
           autoCorrect={false}
-          keyboardType="email-address"
-          onChangeText={() => {}}
+          onChangeText={setNome}
         />
 
         <TextInput
@@ -24,7 +50,7 @@ export default function CadastroScreen() {
           placeholder="N° do crachá"
           autoCorrect={false}
           keyboardType="numeric"
-          onChangeText={() => {}}
+          onChangeText={setN_cracha}
         />
 
         <TextInput
@@ -32,10 +58,10 @@ export default function CadastroScreen() {
           placeholder="Senha"
           secureTextEntry
           autoCorrect={false}
-          onChangeText={() => {}}
+          onChangeText={setSenha}
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={cadastrarAtendente}>
           <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
 
