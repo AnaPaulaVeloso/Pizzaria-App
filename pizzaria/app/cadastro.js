@@ -4,6 +4,7 @@ import { Atendente } from "../model/atendente";
 import { API_BASE_URL_DB } from "../service/config";
 import { useState } from "react";
 import { api } from "../service/api_db";
+import styles from "../style/Style_login&cadastro";
 
 export default function CadastroScreen() {
   const router = useRouter();
@@ -73,49 +74,3 @@ export default function CadastroScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  containerLogo: {
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  logo: {
-    width: 300,
-    height: 150,
-  },
-  container: {
-    width: "90%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    backgroundColor: "#FFF",
-    width: "90%",
-    marginBottom: 15,
-    color: "#B2B4B5",
-    fontSize: 14,
-    borderRadius: 10,
-    padding: 10,
-    borderColor:'#F2BF5E',
-    borderWidth: 2,
-  },
-  button: {
-    backgroundColor: "#8C030E",
-    width: "90%",
-    padding: 10,
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#FFF",
-    fontSize: 16,
-  },
-  linkText: {
-    marginTop: 10,
-    color: "#3b5998",
-  },
-});

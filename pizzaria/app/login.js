@@ -4,6 +4,8 @@ import { API_BASE_URL_DB } from "../service/config";
 import Atendente from '../model/atendente';
 import { useState } from "react";
 import { api } from "../service/api_db";
+import styles from "../style/Style_login&cadastro";
+import { router } from "expo-router";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -28,7 +30,7 @@ export default function LoginScreen() {
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.containerLogo}>
-        <Image source={require("../assets/B1.png")} style={styles.logo} />
+        <Image source={require("../assets/B1.png" )} style={styles.logo} /> 
       </View>
 
       <View style={styles.container}>
@@ -50,7 +52,8 @@ export default function LoginScreen() {
           onChangeText={setSenha}
         />
         
-        <TouchableOpacity style={styles.button} onPress={fazerLogin}>
+        <TouchableOpacity style={styles.button} onPress={() => router.push("/PagGarconete")}> 
+          {/* // fazerLogin é a função que faz o login que o leo crio  */}
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
         
@@ -63,49 +66,4 @@ export default function LoginScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  containerLogo: {
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  logo: {
-    width: 300,
-    height:150,
-  },
-  container: {
-    width: "90%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    backgroundColor: "#FFF",
-    width: "90%",
-    marginBottom: 16,
-    color: "#222",
-    fontSize: 14,
-    borderRadius: 10,
-    padding: 10,
-    borderColor:'#F2BF5E',
-    borderWidth: 2,
-  },
-  button: {
-    backgroundColor: "#8C030E",
-    width: "90%",
-    padding: 10,
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#FFF",
-    fontSize: 16,
-  },
-  linkText: {
-    marginTop: 10,
-    color: "#3b5998",
-  },
-});
+
