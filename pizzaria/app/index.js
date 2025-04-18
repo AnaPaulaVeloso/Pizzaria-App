@@ -23,11 +23,11 @@ export default function WelcomeScreen() {
 
   
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.signInButton} onPress={() => router.push("/login")}>
+        <TouchableOpacity style={styles.signInButton} onPress={() => router.push("/(auth)/login")}>
           <Text style={styles.signInText}>Entrar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.signUpButton} onPress={() => router.push("/cadastro")}>
+        <TouchableOpacity style={styles.signUpButton} onPress={() => router.push("/(auth)/cadastro")}>
           <Text style={styles.signUpText}>Cadastra-se</Text>
         </TouchableOpacity>
       </View>

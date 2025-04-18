@@ -1,10 +1,10 @@
 import { View, Text, Button, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
-import { API_BASE_URL_DB } from "../service/config";
-import Atendente from '../model/atendente';
+import { API_BASE_URL_DB } from "../../service/config";
+import Atendente from '../../model/atendente';
 import { useState } from "react";
-import { api } from "../service/api_db";
-import styles from "../style/Style_login&cadastro";
+import { api } from "../../service/api_db";
+import styles from "../../style/Style_login&cadastro";
 import { router } from "expo-router";
 
 export default function LoginScreen() {
@@ -30,7 +30,7 @@ export default function LoginScreen() {
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.containerLogo}>
-        <Image source={require("../assets/B1.png" )} style={styles.logo} /> 
+        <Image source={require("../../assets/B1.png" )} style={styles.logo} /> 
       </View>
 
       <View style={styles.container}>
@@ -52,7 +52,7 @@ export default function LoginScreen() {
           onChangeText={setSenha}
         />
         
-        <TouchableOpacity style={styles.button} onPress={() => router.push("/PagGarconete")}> 
+        <TouchableOpacity style={styles.button} onPress={() => router.push("../pag_garconete")}> 
           {/* // fazerLogin é a função que faz o login que o leo crio  */}
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>

@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet,ScrollView} from 'react-native'; // Importando os componentes do React Native
-import Card from "../components/Card"; // Corrigindo importação
-import styles from "../style/globalStyles";
+import Card from "../../components/Card"; // Corrigindo importação
+import styles from "../../style/globalStyles";
 import React from "react";
 
 

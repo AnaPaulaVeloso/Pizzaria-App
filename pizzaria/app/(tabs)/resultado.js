@@ -8,16 +8,16 @@ export default function ResultadoScreen() {
   // Função para determinar qual imagem mostrar baseado no tipo
   const getPizzaImage = () => {
     if (pedido.tipo_predito.toLowerCase().includes('doce')) {
-      return require('../assets/pizza-doce.png');
+      return require('../../assets/pizza-doce.png');
     } else {
-      return require('../assets/pizza-salgada.png');
+      return require('../../assets/pizza-salgada.png');
     }
   };
 
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.containerLogo}>
-        <Image source={require("../assets/B1.png")} style={styles.logo} />
+        <Image source={require("../../assets/B1.png")} style={styles.logo} />
       </View>
 
       <ScrollView style={styles.container}>

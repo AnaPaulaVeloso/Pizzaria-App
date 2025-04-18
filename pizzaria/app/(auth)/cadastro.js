@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
-import { Atendente } from "../model/atendente";
-import { API_BASE_URL_DB } from "../service/config";
+import { Atendente } from "../../model/atendente";
+import { API_BASE_URL_DB } from "../../service/config";
 import { useState } from "react";
-import { api } from "../service/api_db";
-import styles from "../style/Style_login&cadastro";
+import { api } from "../../service/api_db";
+import styles from "../../style/Style_login&cadastro";
 
 export default function CadastroScreen() {
   const router = useRouter();
@@ -35,7 +35,7 @@ export default function CadastroScreen() {
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.containerLogo}>
-        <Image source={require("../assets/B1.png")} style={styles.logo} />
+        <Image source={require("../../assets/B1.png")} style={styles.logo} />
       </View>
 
       <View style={styles.container}>

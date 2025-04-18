@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView, Alert, StyleSheet } from "react-native";
-import Card from "../components/Card"; // Corrigindo importação
-import styles from "../style/globalStyles";
+import Card from "../../components/Card"; // Corrigindo importação
+import styles from "../../style/globalStyles";
 
 const pizzas = [
   { id: 1, nome: "Calabresa", preco: 30, imagem: "https://via.placeholder.com/150" },

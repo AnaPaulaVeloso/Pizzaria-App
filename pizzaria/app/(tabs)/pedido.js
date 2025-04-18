@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView, Image } from 'react-native';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { API_BASE_URL_ML } from '../service/config';
+import { API_BASE_URL_ML } from '../../service/config';
 
 export default function PedidoScreen() {
   const [mesa, setMesa] = useState('');
@@ -35,7 +35,7 @@ export default function PedidoScreen() {
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.containerLogo}>
-        <Image source={require("../assets/B1.png")} style={styles.logo} />
+        <Image source={require("../../assets/B1.png")} style={styles.logo} />
       </View>
 
       <View style={styles.container}>
@@ -59,7 +59,7 @@ export default function PedidoScreen() {
           <Text style={styles.buttonText}>Buscar Previsão</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.replace('/login')}>
+        <TouchableOpacity onPress={() => router.replace('../(auth)/login')}>
           <Text style={styles.linkText}>Sair</Text>
         </TouchableOpacity>
       </View>

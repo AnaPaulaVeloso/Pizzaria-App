@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import Butao from '../components/butao'; // Certifique-se de que o Butao esteja adaptado para React Native
+import Butao from '../../components/butao'; // Certifique-se de que o Butao esteja adaptado para React Native
 import { View, Text, StyleSheet, Alert } from 'react-native';
 
 const PagBebidas = () => {
@@ -22,7 +22,7 @@ const PagBebidas = () => {
     };
 
     console.log("Bebida adicionada:", pedidoBebida);
-    navigate.push("/PagACarrinho");
+    navigate.push("/carrinho");
   };
 
   return (
@@ -79,7 +79,7 @@ const PagBebidas = () => {
 
       <View style={styles.buttonContainer}>
         <Butao title="✅ Adicionar ao Pedido" onPress={adicionarBebida} />
-        <Butao title="🔙 Voltar" onPress={() => navigate.push("/PagAddPedido")} />
+        {/* <Butao title="🔙 Voltar" onPress={() => navigate.push("/addPedido")} /> */}
       </View>
     </View>
   );

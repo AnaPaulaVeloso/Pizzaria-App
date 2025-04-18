@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import  Butao  from "../components/butao"; // Corrigindo para o nome correto
+import  Butao  from "../../components/butao"; // Corrigindo para o nome correto
 import { View, Text, StyleSheet } from 'react-native';
 
 const PagGarconetes = () => {
@@ -10,16 +10,15 @@ const PagGarconetes = () => {
       <Text style={styles.title}>Opções Disponíveis</Text>
       
       <View style={styles.buttonContainer}>
-        <Butao 
+        {/* <Butao 
           title="Selecionar Mesa" 
-          onPress={() => navigate.push("/PagAddPedido")} 
+          onPress={() => navigate.push("/addpedido")} 
           
-        />
-        <Butao 
-          title="Ver Históricos" 
-          onPress={() => navigate.push("/PagHistorico")} 
-        
-        />
+
+        /> */}
+
+        <Text style={styles.title}>Selecione uma mesa</Text>
+       
       </View>
     </View>
   );
