@@ -20,7 +20,7 @@ export default function LoginScreen() {
       }
 
       await api.login(parseInt(n_cracha), senha);
-      router.push("/pedido");
+      router.push("/PagGarconete");
     } catch (error) {
       console.error('Erro no login:', error);
       alert("Erro ao fazer login. Verifique suas credenciais.");
@@ -51,9 +51,7 @@ export default function LoginScreen() {
           value={senha}
           onChangeText={setSenha}
         />
-        
-        <TouchableOpacity style={styles.button} onPress={() => router.push("../pag_garconete")}> 
-          {/* // fazerLogin é a função que faz o login que o leo crio  */}
+        <TouchableOpacity style={styles.button} onPress={fazerLogin}> 
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
         
