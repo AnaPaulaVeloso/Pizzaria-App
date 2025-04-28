@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@expo/vector-icons": "^14.1.0",
+    "expo": "~52.0.46",
+    "expo-router": "~4.0.20",
+    "react-native": "^0.76.9",
+    "react-native-gesture-handler": "^2.25.0",
+    "react-native-svg": "^15.8.0"
+  }
+}
