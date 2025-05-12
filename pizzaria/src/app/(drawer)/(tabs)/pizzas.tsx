@@ -1,57 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, Alert } from "react-native";
-import ProdutoCard from "../../../componest/produtoCard";
 import { FloatButton } from '../../../componest/float-button';
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
 import { styles } from "../../../styles/pizzasStyles";
 import { globalStyles } from "../../../styles/globalStyles";
-
-const pizzas = [
-  { id: 1, nome: "Calabresa", preco: 30, imagem: "https://via.placeholder.com/150" },
-  { id: 2, nome: "Portuguesa", preco: 32, imagem: "https://via.placeholder.com/150" },
-  { id: 3, nome: "Frango com Catupiry", preco: 35, imagem: "https://via.placeholder.com/150" },
-  { id: 4, nome: "Quatro Queijos", preco: 33, imagem: "https://via.placeholder.com/150" },
-  { id: 5, nome: "Marguerita", preco: 31, imagem: "https://via.placeholder.com/150" },
-  { id: 6, nome: "Chocolate", preco: 28, imagem: "https://via.placeholder.com/150" },
-];
+import { API_PIZZAS_URL } from "../../../service/config";
+import { Pizza } from "../../../model/pizza";
+import Forma from "../../../componest/forma";
 
 const PagPizzas = () => {
-  const navigate = useRouter();
-  const [sabor, setSabor] = useState("");
-  const [tamanho, setTamanho] = useState("");
-  const [borda, setBorda] = useState("");
+  const router = useRouter();
+  const [pizzas, setPizzas] = useState<Pizza[]>([]);
 
-  const adicionarPizza = () => {
-    if (!sabor || !tamanho) {
-      Alert.alert("Erro", "Selecione um sabor e um tamanho antes de continuar.");
-      return;
-    }
-
-    const pedidoPizza = {
-      sabor,
-      tamanho,
-      borda,
-    };
-
-    console.log("Pizza adicionada:", pedidoPizza);
-    Alert.alert("Sucesso", "Pizza adicionada ao pedido com sucesso!");
-  };
+  useEffect(() => {
+    fetch(API_PIZZAS_URL)
+      .then(res => res.json())
+      .then(data => setPizzas(data))
+      .catch(err => console.error("Erro ao buscar pizzas:", err));
+  }, []);
 
   return (
     <View style={globalStyles.container}>
       <Text style={globalStyles.title}>🍕 Pizzas mais vendidas</Text>
 
       <FlatList
-        horizontal={true}
+        horizontal
         contentContainerStyle={globalStyles.gridContainer2}
         showsHorizontalScrollIndicator={false}
         data={pizzas}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <ProdutoCard
-            produto={item}
-            style={globalStyles.cardHorizontal}
+          <Forma
+            nome={item.nome}
+            ingredientes={item.ingredientes}
+            imagem={`http://localhost:8000${item.imagem}`}
+            preco={item.preco}
           />
         )}
       />
@@ -63,15 +46,14 @@ const PagPizzas = () => {
         data={pizzas}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <ProdutoCard
-            produto={item}
+          <Forma
+            nome={item.nome}
+            ingredientes={item.ingredientes}
+            imagem={`http://localhost:8000${item.imagem}`}
+            preco={item.preco}
           />
         )}
       />
-
-   
-
-      
     </View>
   );
 };

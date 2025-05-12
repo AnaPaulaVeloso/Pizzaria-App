@@ -1,58 +1,63 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import ProdutoCard from "../../../componest/produtoCard";
-import { styles } from "../../../styles/bebidasStyles";
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, Alert } from "react-native";
 import { FloatButton } from '../../../componest/float-button';
 import { useRouter } from 'expo-router';
-
-const bebidas = [
-  { id: 1, nome: "Coca-Cola 2L", preco: 10, imagem: "https://via.placeholder.com/150" },
-  { id: 2, nome: "Guaraná 2L", preco: 9, imagem: "https://via.placeholder.com/150" },
-  { id: 3, nome: "Fanta 2L", preco: 9, imagem: "https://via.placeholder.com/150" },
-  { id: 4, nome: "Sprite 2L", preco: 9, imagem: "https://via.placeholder.com/150" },
-  { id: 5, nome: "Água Mineral 500ml", preco: 3, imagem: "https://via.placeholder.com/150" },
-  { id: 6, nome: "Suco de Laranja 1L", preco: 8, imagem: "https://via.placeholder.com/150" },
-  { id: 7, nome: "Suco de Uva 1L", preco: 8, imagem: "https://via.placeholder.com/150" },
-  { id: 8, nome: "Cerveja 600ml", preco: 7, imagem: "https://via.placeholder.com/150" },
-  { id: 9, nome: "Refrigerante Lata", preco: 5, imagem: "https://via.placeholder.com/150" },
-  { id: 10, nome: "Água de Coco", preco: 6, imagem: "https://via.placeholder.com/150" },
-  { id: 11, nome: "Energético", preco: 8, imagem: "https://via.placeholder.com/150" },
-  { id: 12, nome: "Chá Gelado", preco: 4, imagem: "https://via.placeholder.com/150" }
-];
+import { styles } from "../../../styles/bebidasStyles"; // Importe os estilos corretos para bebidas
+import { globalStyles } from "../../../styles/globalStyles";
+import { API_BEBIDAS_URL } from "../../../service/config";
+import { Bebida } from "../../../model/bebida"; // Certifique-se de ter o modelo Bebida
+import Forma from "../../../componest/forma"; // Reutilizando o componente Forma
 
 const ListaBebidas = () => {
   const router = useRouter();
+  const [bebidas, setBebidas] = useState<Bebida[]>([]);
+
+  useEffect(() => {
+    fetch(API_BEBIDAS_URL)
+      .then(res => res.json())
+      .then(data => setBebidas(data))
+      .catch(err => console.error("Erro ao buscar bebidas:", err));
+  }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>🥤 Bebidas mais vendidas</Text>
-  
+    <View style={globalStyles.container}>
+      <Text style={globalStyles.title}>🥤 Bebidas mais vendidas</Text>
+
       <FlatList
-        horizontal={true}
-        contentContainerStyle={styles.buttonGroup}
+        horizontal
+        contentContainerStyle={globalStyles.gridContainer2}
         showsHorizontalScrollIndicator={false}
         data={bebidas}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id?.toString() || Math.random().toString()}
         renderItem={({ item }) => (
-          <ProdutoCard
-            produto={item}
+          <Forma
+            nome={item.nome}
+            ingredientes={item.descricao || "Sem descrição"} // Usando descrição como ingredientes
+            imagem={`http://localhost:8000${item.imagem}`}
+            preco={item.preco}
           />
         )}
       />
 
-      <Text style={styles.title}>🥤 Escolha sua Bebida</Text>
-  
+      <Text style={globalStyles.title}>🥤 Escolha sua Bebida</Text>
+
       <FlatList
-        contentContainerStyle={styles.buttonGroup}
+        contentContainerStyle={globalStyles.gridContainer1}
         data={bebidas}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id?.toString() || Math.random().toString()}
+        numColumns={2} // Exibindo em duas colunas, ajuste conforme necessário
         renderItem={({ item }) => (
-          <ProdutoCard
-            produto={item}
+          <Forma
+            nome={item.nome}
+            ingredientes={item.descricao || "Sem descrição"} // Usando descrição como ingredientes
+            imagem={`http://localhost:8000${item.imagem}`}
+            preco={item.preco}
           />
         )}
       />
 
-   
+      {/* O FloatButton pode ser usado para adicionar novas bebidas, se necessário */}
+      {/* <FloatButton onPress={() => router.push('/cadastroBebida')} /> */}
     </View>
   );
 };
