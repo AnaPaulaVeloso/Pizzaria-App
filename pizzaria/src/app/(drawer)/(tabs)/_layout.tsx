@@ -1,6 +1,5 @@
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Tabs } from "expo-router";
-import "../../../styles/global.css";
 import MenuButton from "../../../componest/menu-button";
 import { Avatar } from "../../../componest/avatar";
 import { FontAwesome } from '@expo/vector-icons';
@@ -39,8 +38,8 @@ export default function Layout() {
                   }}  />
                 <Tabs.Screen name="carrinho" 
                 options={{
-                    title: 'Carrinho',
-                    tabBarIcon: ({ color }) => <FontAwesome name="shopping-cart" size={24} color={color} />
+                    title: 'Pedido',
+                    tabBarIcon: ({ color }) => <FontAwesome name="clipboard" size={24} color={color} />
                   }} />
                 <Tabs.Screen name="bebidas"  options={{href: null}}/>
                 <Tabs.Screen name="esfihas"  options={{href: null}}/>

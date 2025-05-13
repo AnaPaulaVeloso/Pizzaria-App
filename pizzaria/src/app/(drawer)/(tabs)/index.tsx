@@ -1,41 +1,99 @@
 import { Avatar } from "../../../componest/avatar";
-import { FloatButton } from "../../../componest/float-button";
-import { styles } from "../../../styles/tabsStyles";
 import { useRouter } from "expo-router";
-import { router } from 'expo-router';
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Text, View, FlatList, Image, TouchableOpacity, SafeAreaView } from "react-native";
+import appStyles from "../../../styles/appStyles";
 
-import { Text, View } from "react-native";
+// Tipo para os itens do menu
+interface MenuItem {
+  id: string;
+  nome: string;
+  imagem: string;
+  descricao: string;
+  route: string;
+}
+
+// Dados para os cards da página inicial
+const menuItems: MenuItem[] = [
+  {
+    id: '1',
+    nome: 'Pizzas',
+    imagem: 'https://img.freepik.com/free-photo/top-view-pepperoni-pizza-with-mushroom-sausages-bell-pepper-olive-corn-black-wooden_141793-2158.jpg',
+    descricao: 'Escolha sua pizza favorita',
+    route: '/pizzas'
+  },
+  {
+    id: '2',
+    nome: 'Esfihas',
+    imagem: 'https://img.freepik.com/free-photo/pide-traditional-turkish-food-with-minced-meat_2829-11005.jpg',
+    descricao: 'Deliciosas esfihas',
+    route: '/esfihas'
+  },
+  {
+    id: '3',
+    nome: 'Bebidas',
+    imagem: 'https://img.freepik.com/free-photo/colorful-soda-drinks-macro-shot_53876-42346.jpg',
+    descricao: 'Refrigerantes e sucos',
+    route: '/bebidas'
+  },
+  {
+    id: '4',
+    nome: 'Sugestão de Pedido',
+    imagem: 'https://img.freepik.com/free-photo/waiter-serving-food-customers-cafe_23-2149156081.jpg',
+    descricao: 'Recomendações do dia',
+    route: '/pedido'
+  }
+];
+
+// Interface para as props do componente MenuCard
+interface MenuCardProps {
+  item: MenuItem;
+  onPress: () => void;
+}
+
+// Componente de Card personalizado para a página inicial
+const MenuCard = ({ item, onPress }: MenuCardProps) => {
+  return (
+    <TouchableOpacity 
+      style={appStyles.formaContainer} 
+      onPress={onPress}
+      activeOpacity={0.7}
+    >
+      <Image 
+        source={{ uri: item.imagem }} 
+        style={appStyles.forma} 
+      />
+      <Text style={appStyles.textoCard} numberOfLines={1}>
+        {item.nome}
+      </Text>
+      <Text style={appStyles.ingredientesText} numberOfLines={2}>
+        {item.descricao}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
 export default function Home() {
-  const navigate = useRouter();
+  const router = useRouter();
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={appStyles.container}>
       <Avatar source={{ uri: "https://github.com/iagob2.png" }} />
-
-      <Text style={styles.title}>Adicionar Novo Pedido</Text>
-      <View style={[styles.buttonContainer, { gap: 16 }]}>
-        <FloatButton
-          text="🍕 Escolher Pizza"
-          onPress={() => navigate.push("/pizzas")}
-        />
-        <FloatButton
-          text="🥟 Escolher Esfiha"
-          onPress={() => navigate.push("/esfihas")}
-        />
-        <FloatButton
-          text="🥤 Escolher Bebida"
-          onPress={() => navigate.push("/bebidas")}
-        />
-        <FloatButton
-          text="📜 Sugestão de Pedido"
-          onPress={() => navigate.push("/pedido")}
-        />
-
-        <TouchableOpacity onPress={() => router.replace('../(auth)/login')}>
-            <Text >Sair</Text>
-          </TouchableOpacity>
-      </View>
-    </View>
+      
+      <Text style={appStyles.title}>   Escolha uma opção</Text>
+      
+      <FlatList
+        data={menuItems}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        contentContainerStyle={appStyles.gridContainer1}
+        columnWrapperStyle={{ justifyContent: 'space-between' }}
+        renderItem={({ item }) => (
+          <MenuCard 
+            item={item} 
+            onPress={() => router.push(item.route)}
+          />
+        )}
+      />
+    </SafeAreaView>
   );
 }

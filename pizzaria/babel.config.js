@@ -5,5 +5,5 @@ module.exports = function (api) {
     plugins: [
       'react-native-reanimated/plugin', // ⬅️ DEVE SER O ÚLTIMO
     ],
-  }; // ⬅️ esse é o que estava faltando fechar
+  };
 };
