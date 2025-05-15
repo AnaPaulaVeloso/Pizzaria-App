@@ -38,7 +38,7 @@ const ListaBebidas = () => {
             <Forma
               nome={item.nome}
               ingredientes={item.descricao || "Sem descrição"}
-              imagem={`http://localhost:8000${item.imagem}`}
+              imagem={`http://147.79.82.109:8000${item.imagem}`}
               preco={item.preco}
               horizontal={true}
               onPress={() => {/* Implementar ação ao clicar */}}
@@ -58,7 +58,7 @@ const ListaBebidas = () => {
           <Forma
             nome={item.nome}
             ingredientes={item.descricao || "Sem descrição"}
-            imagem={`http://localhost:8000${item.imagem}`}
+            imagem={`http://147.79.82.109:8000${item.imagem}`}
             preco={item.preco}
             horizontal={true}
             onPress={() => {/* Implementar ação ao clicar */}}
