@@ -1,6 +1,6 @@
 import { Atendente } from '../model/atendente';
 
-const API_BASE_URL = 'http://localhost:3000'; // Substitua pela sua URL real
+const API_BASE_URL = 'http://192.168.159.193:8001'; // Correto
 
 export const api = {
     async inserirAtendente(atendente: Atendente) {

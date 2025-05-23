@@ -66,9 +66,8 @@ export default function LoginScreen() {
 
                     <TouchableOpacity 
                         style={authStyles.button} 
-                        // onPress={fazerLogin}
-                        onPress={() => {router.push("/(drawer)/(tabs)")}
-}
+                        onPress={fazerLogin}
+                       // onPress={() => {router.push("/(drawer)/(tabs)")}}
                     >
                         <Text style={authStyles.buttonText}>Entrar</Text>
                     </TouchableOpacity>
