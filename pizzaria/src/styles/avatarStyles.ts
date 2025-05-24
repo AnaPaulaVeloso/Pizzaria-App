@@ -10,6 +10,16 @@ const avatarStyles = StyleSheet.create({
     right: 16,
     zIndex: 50,
   },
+  avatarPlaceholder: {
+    backgroundColor: '#8c030e',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  avatarText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
 
 export default avatarStyles; 

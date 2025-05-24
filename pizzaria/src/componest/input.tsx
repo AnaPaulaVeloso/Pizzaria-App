@@ -23,6 +23,7 @@ export function Input({ error, style, children, ...rest }: InputProps) {
                 error && { borderColor: '#ff0000' },
                 style
             ]}
+            secureTextEntry={false}
             placeholderTextColor="#666"
             {...rest}
         />

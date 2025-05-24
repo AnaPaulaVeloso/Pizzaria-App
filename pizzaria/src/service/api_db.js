@@ -3,7 +3,30 @@ import { API_BASE_URL } from "./config";
 export const api = {
     login: async (n_cracha, senha) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/atendente/${n_cracha}/`, {
+            const response = await fetch(`${API_BASE_URL}/login`, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ n_cracha, senha })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            console.log('Login realizado com sucesso:', data);
+            return data;
+        } catch (error) {
+            console.error('Erro ao fazer login:', error);
+            throw error;
+        }
+    },
+    
+    getAtendenteByCracha: async (n_cracha) => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/${n_cracha}`, {
                 method: 'GET',
                 headers: { 
                     'Content-Type': 'application/json'
@@ -15,27 +38,16 @@ export const api = {
             }
             
             const data = await response.json();
-            
-            // Verifica se a senha está correta
-            if (data.senha === senha) {
-                console.log('Login realizado com sucesso:', data);
-                return data;
-            } else {
-                throw new Error('Senha incorreta');
-            }
+            return data;
         } catch (error) {
-            console.error('Erro ao fazer login:', error);
+            console.error('Erro ao buscar atendente:', error);
             throw error;
         }
     },
     
     inserirAtendente: async (atendente) => {
-        try{
-            const url = `${API_BASE_URL}/atendente/`;
-            console.log('Tentando cadastrar atendente:', atendente);
-            console.log('URL completa da requisição:', url);
-            
-            const response = await fetch(url, {
+        try {
+            const response = await fetch(API_BASE_URL, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json'
@@ -43,11 +55,10 @@ export const api = {
                 body: JSON.stringify({
                     n_cracha: parseInt(atendente.n_cracha),
                     nome: atendente.nome,
-                    senha: atendente.senha
+                    senha: atendente.senha,
+                    foto: atendente.foto
                 })
             }); 
-            
-            console.log('Status da resposta:', response.status);
             
             if (!response.ok) {
                 const errorText = await response.text();
@@ -78,7 +89,7 @@ export const api = {
     
     atualizarAtendente: async (n_cracha, dados) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/atendente/${n_cracha}/`, {
+            const response = await fetch(`${API_BASE_URL}/${n_cracha}`, {
                 method: 'PUT',
                 headers: { 
                     'Content-Type': 'application/json'
@@ -101,7 +112,7 @@ export const api = {
     
     deletarAtendente: async (n_cracha) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/atendente/${n_cracha}/`, {
+            const response = await fetch(`${API_BASE_URL}/${n_cracha}`, {
                 method: 'DELETE'
             });
             

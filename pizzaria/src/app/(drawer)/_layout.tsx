@@ -6,24 +6,27 @@ export default function Layout() {
         <Drawer 
             defaultStatus="closed" 
             screenOptions={{ 
-                headerShown: false,
+                headerShown: true,
+                headerTitle: "",
                 drawerStyle: {
                     width: "60%",  
-                }
+                },
+                headerStyle: {
+                    backgroundColor: '#8c030e',
+                },
+                headerTintColor: '#fff',
             }}
             drawerContent={(props) => <DrawerContent {...props} />}
         >
             <Drawer.Screen 
                 name="concluidos" 
                 options={{ 
-                    title: "Pedidos Concluídos",
                     drawerLabel: "Pedidos Concluídos"
                 }} 
             />
             <Drawer.Screen 
                 name="Pendentes" 
                 options={{ 
-                    title: "Pedidos Pendentes",
                     drawerLabel: "Pedidos Pendentes"
                 }} 
             />

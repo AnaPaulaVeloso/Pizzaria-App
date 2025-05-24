@@ -8,12 +8,7 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function Layout() { 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>  
-            <Avatar />
-            <MenuButton />
             <Tabs
-            
-
-
                 screenOptions={{
                     headerShown: false,
                     tabBarStyle: {

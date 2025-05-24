@@ -1,15 +1,24 @@
-import { Image, ImageProps } from "react-native";
+import { Image, ImageProps, TouchableOpacity } from "react-native";
 import avatarStyles from "../styles/avatarStyles";
+import { useRouter } from "expo-router";
 
 type AvatarProps = ImageProps & {
-    size?: "medium"
+    size?: "medium";
 }
 
 export function Avatar({ ...rest }: AvatarProps) {
+    const router = useRouter();
     return (
-        <Image 
-            style={avatarStyles.avatar} 
-            {...rest}
-        />
+        <TouchableOpacity
+            onPress={() => {
+                router.push("/(drawer)/perfil");
+            }}
+            style={avatarStyles.avatar}
+        >
+            <Image
+                style={avatarStyles.avatar}
+                {...rest}
+            />
+        </TouchableOpacity>
     );
 }
