@@ -33,11 +33,19 @@ export const styles = StyleSheet.create({
       elevation: 5,
       alignItems: 'center',
     },
+    label: {
+      alignSelf: 'flex-start',
+      marginLeft: '5%',
+      marginBottom: 5,
+      color: '#333',
+      fontSize: 16,
+      fontWeight: '500',
+    },
     input: {
       backgroundColor: "#FFF",
       width: "90%",
       marginBottom: 15,
-      color: "#B2B4B5",
+      color: "#333",
       fontSize: 14,
       borderRadius: 10,
       padding: 10,
@@ -51,6 +59,10 @@ export const styles = StyleSheet.create({
       borderRadius: 10,
       alignItems: "center",
       marginTop: 10,
+    },
+    buttonDisabled: {
+      backgroundColor: "#CCCCCC",
+      opacity: 0.7,
     },
     buttonText: {
       color: "#FFF",

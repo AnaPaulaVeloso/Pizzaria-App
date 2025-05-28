@@ -1,7 +1,7 @@
 {
   "experiments": {
-  "newArchEnabled": true
-},
+    "newArchEnabled": true
+  },
   "expo": {
     "userInterfaceStyle": "automatic",
     "web": {
@@ -10,7 +10,8 @@
     "scheme": "acme",
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      "expo-sqlite"
     ],
     "name": "pizzaria",
     "slug": "pizzaria"

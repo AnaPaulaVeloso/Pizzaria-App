@@ -4,4 +4,5 @@ export interface Pizza {
     preco: string; // vem como string por ser DecimalField
     ingredientes: string;
     imagem: string; // caminho da imagem, ex: /media/pizzas/portuguesa.jpg
+    bordaRecheada?: boolean; // Nova propriedade para controlar borda recheada
 }

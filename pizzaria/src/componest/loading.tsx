@@ -1,12 +1,19 @@
-import { ActivityIndicator } from "react-native";
+import React from 'react';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 
 export default function Loading() {
   return (
-    <ActivityIndicator
-        size="large"
-        color="#8c030e"
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-  
-    />
-  );
+        <View style={styles.container}>
+            <ActivityIndicator size="large" color="#8c030e" />
+        </View>
+    );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff'
+    }
+});

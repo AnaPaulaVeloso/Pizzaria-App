@@ -84,14 +84,7 @@ export default function CadastroScreen() {
                             style={authStyles.logo} 
                         />
                     )}
-                    <TouchableOpacity 
-                        style={authStyles.button}
-                        onPress={pickImage}
-                    >
-                        <Text style={authStyles.buttonText}>
-                            {foto ? "Alterar Foto" : "Selecionar Foto"}
-                        </Text>
-                    </TouchableOpacity>
+                 
                 </View>
 
                 <View style={authStyles.container}>
@@ -117,6 +110,14 @@ export default function CadastroScreen() {
                         onChangeText={setSenha}
                         error={error && !senha}
                     />
+                    <TouchableOpacity 
+                        style={authStyles.button}
+                        onPress={pickImage}
+                    >
+                        <Text style={authStyles.buttonText}>
+                            {foto ? "Alterar Foto" : "Selecionar Foto"}
+                        </Text>
+                    </TouchableOpacity>
 
                     <TouchableOpacity 
                         style={authStyles.button} 
@@ -124,6 +125,7 @@ export default function CadastroScreen() {
                     >
                         <Text style={authStyles.buttonText}>Cadastrar</Text>
                     </TouchableOpacity>
+                    
 
                     <TouchableOpacity 
                         onPress={() => router.push("/(auth)/login")}

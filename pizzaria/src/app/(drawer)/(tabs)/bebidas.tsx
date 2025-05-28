@@ -36,13 +36,14 @@ const ListaBebidas = () => {
           keyExtractor={(item) => `horizontal-${item.id?.toString() || Math.random().toString()}`}
           renderItem={({ item }) => (
             <Forma
+              id={item.id.toString()}
               nome={item.nome}
               ingredientes={item.descricao || "Sem descrição"}
               imagem={`http://147.79.82.109:8000${item.imagem}`}
-              preco={item.preco}
+              preco={Number(item.preco)}
+              tipo="bebida"
               horizontal={true}
-              onPress={() => {/* Implementar ação ao clicar */}}
-            />
+              />
           )}
         />
       </View>
@@ -56,12 +57,13 @@ const ListaBebidas = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <Forma
+            id={item.id.toString()}
             nome={item.nome}
             ingredientes={item.descricao || "Sem descrição"}
             imagem={`http://147.79.82.109:8000${item.imagem}`}
-            preco={item.preco}
+            preco={Number(item.preco)}
+            tipo="bebida"
             horizontal={true}
-            onPress={() => {/* Implementar ação ao clicar */}}
           />
         )}
       />

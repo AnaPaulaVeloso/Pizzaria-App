@@ -1,6 +1,7 @@
+import React from 'react';
 import { Avatar } from "../../../componest/avatar";
 import { useRouter } from "expo-router";
-import { Text, View, FlatList, Image, TouchableOpacity, SafeAreaView } from "react-native";
+import { Text, View, FlatList, Image, TouchableOpacity, SafeAreaView, StyleSheet } from "react-native";
 import appStyles from "../../../styles/appStyles";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -43,7 +44,7 @@ const menuItems: MenuItem[] = [
     nome: 'Sugestão de Pedido',
     imagem: 'https://img.freepik.com/free-photo/waiter-serving-food-customers-cafe_23-2149156081.jpg',
     descricao: 'Recomendações do dia',
-    route: '/pedido'
+    route: '/resultado'
   }
 ];
 
@@ -98,11 +99,10 @@ export default function Home() {
   }, []);
 
   return (
-    <SafeAreaView style={appStyles.container}>
-      <Avatar source={{ uri: userPhoto || "https://github.com/iagob2.png" }} />
-      
-      <Text style={appStyles.title}>   Escolha uma opção</Text>
-      
+    <SafeAreaView style={[appStyles.container, { paddingTop: 32 }]}> 
+      <View style={styles.titleContainer}>
+        <Text style={[appStyles.title, { textAlign: 'center', marginTop: 24 }]}>Escolha uma opção</Text>
+      </View>
       <FlatList
         data={menuItems}
         keyExtractor={(item) => item.id}
@@ -112,10 +112,32 @@ export default function Home() {
         renderItem={({ item }) => (
           <MenuCard 
             item={item} 
-            onPress={() => router.push(item.route)}
+            onPress={() => {
+              if (item.nome === 'Sugestão de Pedido') {
+                const objetoPredicao = {
+                  tipo_predito: 'Pizza Salgada',
+                  sabor_predito: 'Calabresa',
+                  probabilidade_tipo: 0.85,
+                  probabilidade_sabor: 0.78
+                };
+                router.push({
+                  pathname: '/resultado',
+                  params: { predicao: JSON.stringify(objetoPredicao) }
+                });
+              } else {
+                router.push(item.route);
+              }
+            }}
           />
         )}
       />
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  titleContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+});

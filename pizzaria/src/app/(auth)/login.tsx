@@ -30,8 +30,9 @@ export default function LoginScreen() {
             // Salva os dados do usuário no AsyncStorage
             await AsyncStorage.setItem('user_n_cracha', n_cracha);
             await AsyncStorage.setItem('user_data', JSON.stringify(response));
+            router.push("/pedido");
             
-            router.push("/(drawer)/(tabs)");
+            // router.push("/(drawer)/(tabs)");
         } catch (error: any) {
             console.error('Erro no login:', error);
             setError(true);

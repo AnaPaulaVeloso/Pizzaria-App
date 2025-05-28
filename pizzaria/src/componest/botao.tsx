@@ -1,18 +1,17 @@
-import { TouchableOpacity,View,StyleSheet,Text, ViewStyle } from "react-native";
-import styles from "../styles/styles";
+import { TouchableOpacity,View,Text, ViewStyle } from "react-native";
+import appStyles from "../styles/appStyles";
 
 interface BotaoProps {
     onPress: () => void;
     texto: string;
     style?: ViewStyle;
+    textoStyle?: any;
 }
 
 export default function Botao(props: BotaoProps) {
     return (
-        <TouchableOpacity onPress={props.onPress}>
-            <View style={props.style || styles.botao}>
-                <Text style={styles.textoBotao}>{props.texto}</Text>
-            </View>
+        <TouchableOpacity onPress={props.onPress} style={props.style || appStyles.botao}>
+            <Text style={props.textoStyle || appStyles.textoBotao}>{props.texto}</Text>
         </TouchableOpacity>
     )
 }

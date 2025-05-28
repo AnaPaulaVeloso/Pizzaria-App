@@ -36,12 +36,14 @@ const PagPizzas = () => {
           keyExtractor={(item) => `horizontal-${item.id.toString()}`}
           renderItem={({ item }) => (
             <Forma
+              id={item.id.toString()}
               nome={item.nome}
               ingredientes={item.ingredientes}
               imagem={`http://147.79.82.109:8000${item.imagem}`}
-              preco={item.preco}
+              preco={parseFloat(item.preco)}
+              tipo="pizza"
               horizontal={true}
-              onPress={() => {/* Implementar ação ao clicar */}}
+           
             />
           )}
         />
@@ -56,12 +58,13 @@ const PagPizzas = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <Forma
+            id={item.id.toString()}
             nome={item.nome}
             ingredientes={item.ingredientes}
             imagem={`http://147.79.82.109:8000${item.imagem}`}
-            preco={item.preco}
+            preco={parseFloat(item.preco)}
+            tipo="pizza"
             horizontal={true}
-            onPress={() => {/* Implementar ação ao clicar */}}
           />
         )}
       />

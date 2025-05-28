@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
+import { usePedidoInfo } from '../../../context/pedidoInfoContext';
 
 export default function ResultadoScreen() {
   const { predicao } = useLocalSearchParams();
   const pedido = JSON.parse(predicao as string);
+  const { pedidoAtualInfo } = usePedidoInfo();
 
   // Função para determinar qual imagem mostrar baseado no tipo
   const getPizzaImage = () => {
@@ -33,8 +35,13 @@ export default function ResultadoScreen() {
           
           <View style={styles.infoContainer}>
             <View style={styles.infoItem}>
+              <Text style={styles.infoLabel}>Mesa:</Text>
+              <Text style={styles.infoValue}>{pedidoAtualInfo?.mesa || '-'}</Text>
+            </View>
+            
+            <View style={styles.infoItem}>
               <Text style={styles.infoLabel}>Quantidade de Pessoas:</Text>
-              <Text style={styles.infoValue}>{pedido.quantidade_pessoas}</Text>
+              <Text style={styles.infoValue}>{pedidoAtualInfo?.quantidadePessoas || '-'}</Text>
             </View>
             
             <View style={styles.infoItem}>

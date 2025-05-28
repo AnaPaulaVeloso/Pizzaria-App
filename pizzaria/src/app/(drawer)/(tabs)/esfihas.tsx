@@ -36,13 +36,14 @@ const ListaEsfihas = () => {
           keyExtractor={(item) => `horizontal-${item.id.toString()}`}
           renderItem={({ item }) => (
             <Forma
+              id={item.id.toString()}
+              tipo="esfiha"
               nome={item.nome}
               ingredientes={item.ingredientes}
               imagem={`http://147.79.82.109:8000${item.imagem}`}
-              preco={item.preco}
+              preco={Number(item.preco)}
               horizontal={true}
-              onPress={() => {/* Implementar ação ao clicar */}}
-            />
+              />
           )}
         />
       </View>
@@ -56,12 +57,13 @@ const ListaEsfihas = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <Forma
+            id={item.id.toString()}
+            tipo="esfiha"
             nome={item.nome}
             ingredientes={item.ingredientes}
             imagem={`http://147.79.82.109:8000${item.imagem}`}
-            preco={item.preco}
+            preco={Number(item.preco)}
             horizontal={true}
-            onPress={() => {/* Implementar ação ao clicar */}}
           />
         )}
       />
