@@ -5,4 +5,5 @@ export interface Esfiha {
     preco: string;
     ingredientes: string;
     imagem: string;
+    itemType: 'esfiha';
 }

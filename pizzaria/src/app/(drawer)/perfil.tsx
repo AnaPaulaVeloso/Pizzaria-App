@@ -11,9 +11,11 @@ import * as ImageManipulator from 'expo-image-manipulator';
 import {Input} from "../../componest/input";
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import * as FileSystem from 'expo-file-system';
+import { usePedidoInfo } from '../../context/pedidoInfoContext';
 
 export default function PerfilScreen() {
     const router = useRouter();
+    const { atendenteLogado } = usePedidoInfo();
     const [usuario, setUsuario] = useState<Atendente | null>(null);
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
@@ -28,14 +30,13 @@ export default function PerfilScreen() {
         try {
             setLoading(true);
             setError(null);
-            const loggedInCracha = await AsyncStorage.getItem('user_n_cracha');
 
-            if (!loggedInCracha) {
+            if (!atendenteLogado) {
                 setError("Nenhum usuário logado encontrado. Por favor, faça login.");
                 return;
             }
 
-            const user = await api.getAtendenteByCracha(loggedInCracha);
+            const user = await api.getAtendenteByCracha(atendenteLogado.n_cracha);
             if (user) {
                 setUsuario(user);
                 setEditedNome(user.nome || '');
@@ -51,7 +52,7 @@ export default function PerfilScreen() {
         } finally {
             setLoading(false);
         }
-    }, [router]);
+    }, [atendenteLogado, router]);
 
     useEffect(() => {
         fetchUsuario();
@@ -168,8 +169,8 @@ export default function PerfilScreen() {
 
     const handleLogout = async () => {
         try {
-            await AsyncStorage.removeItem('user_n_cracha');
-            await AsyncStorage.removeItem('user_data');
+            await AsyncStorage.removeItem('atendente');
+            await AsyncStorage.removeItem('pedidoAtualInfo');
             router.replace('/login');
         } catch (error) {
             console.error('Erro ao fazer logout:', error);

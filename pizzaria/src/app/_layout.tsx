@@ -1,6 +1,8 @@
 import React from 'react';
 import { Stack } from 'expo-router';
 import { useFonts, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from "@expo-google-fonts/roboto";   
+import { PedidoInfoProvider } from '../context/pedidoInfoContext';
+import { CarrinhoProvider } from '../context/CarrinhoContext';
 import Loading from "../componest/loading";
 import { StatusBar } from "expo-status-bar";
 
@@ -17,16 +19,23 @@ export default function Layout() {
 
     return (
         <>
+
+
             <StatusBar style="light" backgroundColor="#8c030e" translucent={false} />
-            <Stack
-                screenOptions={{
-                    headerShown: false,
-                    contentStyle: { backgroundColor: '#fff' }
-                }}
-            >
-                <Stack.Screen name="(auth)" />
-                <Stack.Screen name="(tabs)" />
-            </Stack>
+
+            <PedidoInfoProvider>
+             <CarrinhoProvider>
+                    <Stack
+                        screenOptions={{
+                        headerShown: false,
+                        contentStyle: { backgroundColor: '#fff' }
+                        }}
+                        >
+                        <Stack.Screen name="(auth)" />
+                        <Stack.Screen name="(tabs)" />
+                    </Stack>
+                </CarrinhoProvider>
+            </PedidoInfoProvider>
         </>
     );
 } 

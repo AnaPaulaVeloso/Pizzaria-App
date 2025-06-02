@@ -5,6 +5,7 @@ import appStyles from "../../../styles/appStyles";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { api } from "../../../service/api_db";
+import { usePedidoInfo } from '../../../context/pedidoInfoContext';
 
 // Tipo para os itens do menu
 interface MenuItem {
@@ -78,16 +79,13 @@ const MenuCard = ({ item, onPress }: MenuCardProps) => {
 export default function Home() {
   const router = useRouter();
   const [userPhoto, setUserPhoto] = useState<string | null>(null);
+  const { atendenteLogado } = usePedidoInfo();
 
   useEffect(() => {
     const fetchUserPhoto = async () => {
       try {
-        const loggedInCracha = await AsyncStorage.getItem('user_n_cracha');
-        if (loggedInCracha) {
-          const user = await api.getAtendenteByCracha(loggedInCracha);
-          if (user?.foto) {
-            setUserPhoto(user.foto);
-          }
+        if (atendenteLogado?.foto) {
+          setUserPhoto(atendenteLogado.foto);
         }
       } catch (error) {
         console.error("Erro ao buscar foto do usuário:", error);
@@ -95,7 +93,7 @@ export default function Home() {
     };
 
     fetchUserPhoto();
-  }, []);
+  }, [atendenteLogado]);
 
   return (
     <SafeAreaView style={appStyles.container}>
