@@ -141,15 +141,7 @@ export default function CadastroScreen() {
                             style={authStyles.logo} 
                         />
                     )}
-                    <TouchableOpacity 
-                        style={authStyles.button}
-                        onPress={pickImage}
-                        disabled={isLoading}
-                    >
-                        <Text style={authStyles.buttonText}>
-                            {foto ? "Alterar Foto" : "Selecionar Foto"}
-                        </Text>
-                    </TouchableOpacity>
+                   
                 </View>
 
                 <View style={authStyles.container}>
@@ -181,6 +173,17 @@ export default function CadastroScreen() {
                         error={error && !senha.trim()}
                         editable={!isLoading}
                     />
+
+                     <TouchableOpacity 
+                        style={authStyles.button}
+                        onPress={pickImage}
+                        disabled={isLoading}
+                    >
+                        <Text style={authStyles.buttonText}>
+                            {foto ? "Alterar Foto" : "Selecionar Foto"}
+                        </Text>
+                    </TouchableOpacity>
+
 
                     <TouchableOpacity 
                         style={[
