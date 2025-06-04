@@ -69,6 +69,7 @@ export default function PedidoScreen() {
         try {
             setIsLoading(true);
             await iniciarNovoPedido(mesa, quantidadePessoasNum);
+            
             router.push('/(drawer)/(tabs)');
         } catch (error) {
             console.error('Erro ao iniciar pedido:', error);

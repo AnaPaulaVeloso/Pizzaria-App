@@ -1,7 +1,7 @@
 // services/api_db.ts
 import { Atendente } from '../model/atendente';
 import { PedidoCompleto } from '../model/pedidoCompleto';
-import { API_BASE_URL } from './config';
+import { API_BASE_URL, API_BASE_URL_ML } from './config';
 
 const DEFAULT_TIMEOUT = 10000; // 10 segundos
 
@@ -363,6 +363,29 @@ export const api = {
                 throw new Error('Erro de conexão. Verifique sua internet e tente novamente.');
             }
             throw new Error('Falha ao cancelar o pedido. Tente novamente.');
+        }
+    },
+
+    async obterSugestao(quantidadePessoas: number) {
+        try {
+            const response = await fetchWithTimeout(`${API_BASE_URL_ML}${quantidadePessoas}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.detail || 'Erro ao obter sugestão de pizza');
+            }
+
+            return response.json();
+        } catch (error: any) {
+            if (error.message.includes('Network request failed')) {
+                throw new Error('Erro de conexão. Verifique sua internet e tente novamente.');
+            }
+            throw error;
         }
     }
 };

@@ -1,6 +1,6 @@
 import { Avatar } from "../../../componest/avatar";
 import { useRouter } from "expo-router";
-import { Text, View, FlatList, Image, TouchableOpacity, SafeAreaView } from "react-native";
+import { Text, View, FlatList, Image, TouchableOpacity, SafeAreaView, Alert } from "react-native";
 import appStyles from "../../../styles/appStyles";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -44,7 +44,7 @@ const menuItems: MenuItem[] = [
     nome: 'Sugestão de Pedido',
     imagem: 'https://img.freepik.com/free-photo/waiter-serving-food-customers-cafe_23-2149156081.jpg',
     descricao: 'Recomendações do dia',
-    route: '/pedido'
+    route: '/resultado'
   }
 ];
 
@@ -79,7 +79,7 @@ const MenuCard = ({ item, onPress }: MenuCardProps) => {
 export default function Home() {
   const router = useRouter();
   const [userPhoto, setUserPhoto] = useState<string | null>(null);
-  const { atendenteLogado } = usePedidoInfo();
+  const { atendenteLogado, pedidoAtual } = usePedidoInfo();
 
   useEffect(() => {
     const fetchUserPhoto = async () => {
@@ -94,6 +94,24 @@ export default function Home() {
 
     fetchUserPhoto();
   }, [atendenteLogado]);
+
+  const handleSugestaoPress = async () => {
+    try {
+      if (!pedidoAtual) {
+        Alert.alert('Atenção', 'Você precisa iniciar um pedido primeiro para obter sugestões.');
+        return;
+      }
+
+      const sugestao = await api.obterSugestao(pedidoAtual.quantidadepessoas);
+      router.push({
+        pathname: '/resultado',
+        params: { predicao: JSON.stringify(sugestao) }
+      });
+    } catch (error) {
+      console.error('Erro ao obter sugestão:', error);
+      Alert.alert('Erro', 'Não foi possível obter a sugestão. Tente novamente.');
+    }
+  };
 
   return (
     <SafeAreaView style={appStyles.container}>
@@ -110,7 +128,13 @@ export default function Home() {
         renderItem={({ item }) => (
           <MenuCard 
             item={item} 
-            onPress={() => router.push(item.route)}
+            onPress={() => {
+              if (item.id === '4') {
+                handleSugestaoPress();
+              } else {
+                router.push(item.route);
+              }
+            }}
           />
         )}
       />

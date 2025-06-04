@@ -41,11 +41,6 @@ export default function ResultadoScreen() {
               <Text style={styles.infoLabel}>Probabilidade do Tipo:</Text>
               <Text style={styles.infoValue}>{(pedido.probabilidade_tipo * 100).toFixed(1)}%</Text>
             </View>
-            
-            <View style={styles.infoItem}>
-              <Text style={styles.infoLabel}>Probabilidade do Sabor:</Text>
-              <Text style={styles.infoValue}>{(pedido.probabilidade_sabor * 100).toFixed(1)}%</Text>
-            </View>
           </View>
         </View>
 
