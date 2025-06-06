@@ -97,10 +97,12 @@ const appStyles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 12,
-    marginLeft:28,
-    marginTop:13,
+    marginLeft: 0,
+    marginTop: 13,
     color: '#333',
     paddingHorizontal: 10,
+    textAlign: 'center',
+    alignSelf: 'center',
   },
   subTitle: {
     fontSize: 18,
@@ -109,6 +111,8 @@ const appStyles = StyleSheet.create({
     color: '#333',
     paddingHorizontal: 10,
     marginTop: 16,
+    textAlign: 'center',
+    alignSelf: 'center',
   },
   textoCard: {
     fontSize: 16,
