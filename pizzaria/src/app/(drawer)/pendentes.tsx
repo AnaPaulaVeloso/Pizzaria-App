@@ -175,7 +175,8 @@ export default function PendentesScreen() {
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#007AFF" />
+                <ActivityIndicator size="large" color="#FFC107" />
+                <ActivityIndicator size="large" color="#8c030e" />
             </View>
         );
     }
@@ -282,7 +283,7 @@ const styles = StyleSheet.create({
     mesaText: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#007AFF',
+        color: '#8c030e',
     },
     statusText: {
         fontSize: 16,

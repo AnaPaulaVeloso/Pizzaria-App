@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     sectionTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#007AFF',
+        color: '#8c030e',
         marginBottom: 10,
     },
     infoText: {
@@ -218,6 +218,11 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#666',
         fontStyle: 'italic',
+    },
+    mesaText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#8c030e',
     },
 });
 

@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     mesaText: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#007AFF',
+        color: '#8c030e',
         marginBottom: 8,
     },
     infoText: {
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 4,
     },
     addButton: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#8c030e',
     },
     finishButton: {
         backgroundColor: '#28a745',

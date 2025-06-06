@@ -41,7 +41,7 @@ const { width } = Dimensions.get('window');
 
 const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ visible, item, onClose, onAddItem }) => {
     const [quantidade, setQuantidade] = useState(1);
-    const [bordaRecheada, setBordaRecheada] = useState<'Catupiry' | 'Doce de Leite' | null>(null);
+    const [bordaRecheada, setBordaRecheada] = useState<'Catupiry' | 'Chocolate' | null>(null);
     const [adicionaisBebidaSelecionados, setAdicionaisBebidaSelecionados] = useState<string[]>([]);
     const [observacao, setObservacao] = useState('');
     const [precoTotalItem, setPrecoTotalItem] = useState(0);
@@ -223,14 +223,14 @@ const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ visible, item, onClos
                                     <TouchableOpacity 
                                         style={[
                                             styles.bordaBotao,
-                                            bordaRecheada === 'Doce de Leite' && styles.bordaBotaoSelecionado
+                                            bordaRecheada === 'Chocolate' && styles.bordaBotaoSelecionado
                                         ]}
-                                        onPress={() => setBordaRecheada(bordaRecheada === 'Doce de Leite' ? null : 'Doce de Leite')}
+                                        onPress={() => setBordaRecheada(bordaRecheada === 'Chocolate' ? null : 'Chocolate')}
                                     >
                                         <Text style={[
                                             styles.bordaBotaoTexto,
-                                            bordaRecheada === 'Doce de Leite' && { color: '#fff' }
-                                        ]}>Doce de Leite</Text>
+                                            bordaRecheada === 'Chocolate' && { color: '#fff' }
+                                        ]}>Chocolate</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>

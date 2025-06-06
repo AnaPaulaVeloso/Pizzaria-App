@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
         marginVertical: 8,
     },
     quantityButton: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#8c030e',
         width: 30,
         height: 30,
         borderRadius: 15,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     itemPrice: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#007AFF',
+        color: '#8c030e',
         textAlign: 'right',
     },
     priceContainer: {

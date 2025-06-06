@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     valorTotalText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#007bff',
+        color: '#8c030e',
     },
 });
 

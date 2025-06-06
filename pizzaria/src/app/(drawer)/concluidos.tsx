@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
     mesaText: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#007AFF',
+        color: '#8c030e',
     },
     horaText: {
         fontSize: 16,

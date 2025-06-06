@@ -178,7 +178,12 @@ const CarrinhoPage = () => {
                                 observacao: undefined,
                                 ...(item.tipo === 'pizza' && {
                                     bordaRecheada: item.observacoes?.includes('Borda:') 
-                                        ? (item.observacoes.split('Borda:')[1].split(',')[0].trim() as 'Catupiry' | 'Doce de Leite' | null)
+                                        ? ((() => {
+                                            const borda = item.observacoes.split('Borda:')[1].split(',')[0].trim();
+                                            if (borda === 'Doce de Leite') return 'Chocolate';
+                                            if (borda === 'Catupiry' || borda === 'Chocolate') return borda;
+                                            return null;
+                                        })() as 'Catupiry' | 'Chocolate' | null)
                                         : null
                                 }),
                                 ...(item.tipo === 'bebida' && {
@@ -217,14 +222,14 @@ const CarrinhoPage = () => {
                         </View>
                         
                         <TouchableOpacity 
-                            style={[styles.finishButton, isLoading && styles.finishButtonDisabled]}
+                            style={[styles.botaoFinalizar, isLoading && styles.botaoFinalizarDisabled]}
                             onPress={handleFinalizarPedido}
                             disabled={isLoading}
                         >
                             {isLoading ? (
                                 <ActivityIndicator color="#fff" />
                             ) : (
-                                <Text style={styles.finishButtonText}>Finalizar Pedido</Text>
+                                <Text style={styles.botaoFinalizarTexto}>Finalizar Pedido</Text>
                             )}
                         </TouchableOpacity>
                     </View>
@@ -257,7 +262,7 @@ const styles = StyleSheet.create({
     },
     pedidoInfoText: {
         fontSize: 14,
-        color: '#666',
+        color: '#8c030e',
         marginBottom: 4,
     },
     emptyCartContainer: {
@@ -268,7 +273,7 @@ const styles = StyleSheet.create({
     },
     emptyCartText: {
         fontSize: 16,
-        color: '#666',
+        color: '#8c030e',
         textAlign: 'center',
     },
     listContent: {
@@ -286,26 +291,33 @@ const styles = StyleSheet.create({
     totalText: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#007AFF',
+        color: '#8c030e',
     },
     itemsCount: {
         fontSize: 14,
-        color: '#666',
+        color: '#8c030e',
         marginTop: 4,
     },
-    finishButton: {
-        backgroundColor: '#007AFF',
+    botaoFinalizar: {
+        backgroundColor: '#fff',
+        borderWidth: 2,
+        borderColor: '#8c030e',
         padding: 16,
         borderRadius: 8,
         alignItems: 'center',
+        marginTop: 20,
     },
-    finishButtonDisabled: {
+    botaoFinalizarDisabled: {
         opacity: 0.7,
     },
-    finishButtonText: {
-        color: '#fff',
-        fontSize: 16,
+    botaoFinalizarTexto: {
+        color: '#8c030e',
+        fontSize: 18,
         fontWeight: 'bold',
+    },
+    infoText: {
+        fontSize: 16,
+        color: '#8c030e',
     },
 });
 

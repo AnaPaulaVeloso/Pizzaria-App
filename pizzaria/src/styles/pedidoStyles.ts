@@ -63,7 +63,7 @@ export const styles = StyleSheet.create({
     },
     linkText: {
       marginTop: 10,
-      color: "#3b5998",
+      color: "#8c030e",
     },
   });
     
