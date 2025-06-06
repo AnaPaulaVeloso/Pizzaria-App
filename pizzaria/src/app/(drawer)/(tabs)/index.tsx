@@ -115,10 +115,8 @@ export default function Home() {
 
   return (
     <SafeAreaView style={appStyles.container}>
-      <Avatar source={{ uri: userPhoto || "https://github.com/iagob2.png" }} />
-      
+      {/* <Avatar source={{ uri: userPhoto || "https://github.com/iagob2.png" }} /> */}
       <Text style={appStyles.title}>   Escolha uma opção</Text>
-      
       <FlatList
         data={menuItems}
         keyExtractor={(item) => item.id}

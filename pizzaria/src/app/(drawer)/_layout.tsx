@@ -2,6 +2,7 @@ import { Drawer } from "expo-router/drawer";
 import { useRouter, router } from "expo-router";
 import React from 'react';
 import { DrawerContent } from "../../componest/drawer-content";
+import { Avatar } from "../../componest/avatar";
 
 
 export default function Layout() {
@@ -22,7 +23,9 @@ export default function Layout() {
                             backgroundColor: '#8c030e',
                         },
                         headerTintColor: '#fff',
-                        
+                        headerRight: () => (
+                            <Avatar source={{ uri: "https://github.com/iagob2.png" }} />
+                        ),
                     }}
                     drawerContent={(props) => <DrawerContent {...props} />}
                 >
