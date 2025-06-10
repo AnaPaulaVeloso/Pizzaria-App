@@ -28,21 +28,23 @@ const menuItems: MenuItem[] = [
   {
     id: '2',
     nome: 'Esfihas',
-    imagem: 'https://img.freepik.com/free-photo/pide-traditional-turkish-food-with-minced-meat_2829-11005.jpg',
+    imagem: require('../../../assets/imagens/esfiha.jpg'),
     descricao: 'Deliciosas esfihas',
     route: '/esfihas'
   },
   {
     id: '3',
     nome: 'Bebidas',
-    imagem: 'https://img.freepik.com/free-photo/colorful-soda-drinks-macro-shot_53876-42346.jpg',
+    imagem: require('../../../assets/imagens/bebida.jpg'),
+
     descricao: 'Refrigerantes e sucos',
     route: '/bebidas'
   },
   {
     id: '4',
     nome: 'Sugestão de Pedido',
-    imagem: 'https://img.freepik.com/free-photo/waiter-serving-food-customers-cafe_23-2149156081.jpg',
+    imagem: require('../../../assets/imagens/sugestao.jpg'),
+
     descricao: 'Recomendações do dia',
     route: '/resultado'
   }
@@ -63,7 +65,7 @@ const MenuCard = ({ item, onPress }: MenuCardProps) => {
       activeOpacity={0.7}
     >
       <Image 
-        source={{ uri: item.imagem }} 
+        source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem} 
         style={appStyles.forma} 
       />
       <Text style={appStyles.textoCard} numberOfLines={1}>
@@ -114,7 +116,7 @@ export default function Home() {
   };
 
   return (
-    <SafeAreaView style={appStyles.container}>
+    <SafeAreaView style={appStyles.container}> 
       {/* <Avatar source={{ uri: userPhoto || "https://github.com/iagob2.png" }} /> */}
       <Text style={appStyles.title}>   Escolha uma opção</Text>
       <FlatList

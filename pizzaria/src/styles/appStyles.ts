@@ -75,15 +75,13 @@ const appStyles = StyleSheet.create({
 
   // Elementos visuais
   forma: {
-    width: '100%',
-    aspectRatio: 1,
-    borderRadius: 50,
+    width: 90,
+    height: 90,
+    borderRadius: 45,
     marginBottom: 8,
     backgroundColor: "#eee",
-    maxWidth: 90,
-    maxHeight: 90,
     alignSelf: 'center',
-    resizeMode: Platform.OS === 'web' ? 'contain' : 'cover',
+    resizeMode: 'cover',
   },
   touchableContainer: {
     width: '100%',

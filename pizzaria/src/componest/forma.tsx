@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     textoCard: {
-        fontSize: 16,
+        fontSize: 14,
         textAlign: "center",
         color: "#333",
         fontWeight: 'bold',
@@ -79,12 +79,12 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     ingredientesText: {
-        fontSize: 12,
+        fontSize: 11,
         textAlign: "center",
         color: "#666",
-        marginBottom: 6,
-        height: 40,
-        overflow: 'visible',
+        marginBottom: 8,
+        height: 25,
+        overflow: 'hidden',
         paddingHorizontal: 5,
         flexWrap: 'wrap',
     },
@@ -93,6 +93,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "#8C030E",
         fontWeight: 'bold',
-        marginTop: 4,
+        marginTop: 8,
     },
 });
