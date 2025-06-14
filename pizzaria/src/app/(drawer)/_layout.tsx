@@ -1,15 +1,39 @@
 import { Drawer } from "expo-router/drawer";
 import { useRouter, router } from "expo-router";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DrawerContent } from "../../componest/drawer-content";
 import { Avatar } from "../../componest/avatar";
-
+import { usePedidoInfo } from "../../context/pedidoInfoContext";
+import { View } from "react-native";
 
 export default function Layout() {
+    const { atendenteLogado } = usePedidoInfo();
+    const [fotoAtual, setFotoAtual] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        if (atendenteLogado?.foto) {
+            setFotoAtual(atendenteLogado.foto);
+        }
+    }, [atendenteLogado?.foto]);
 
     //   const handleNovoAtendimento = () => {
     //     router.push('/novoAtendimento');
     // };
+
+    const renderAvatar = () => {
+        if (!atendenteLogado) {
+            return null;
+        }
+
+        return (
+            <View style={{ marginRight: 10 }}>
+                <Avatar 
+                    source={fotoAtual ? { uri: fotoAtual } : undefined} 
+                />
+            </View>
+        );
+    };
+
     return (
                 <Drawer 
                     defaultStatus="closed" 
@@ -23,9 +47,7 @@ export default function Layout() {
                             backgroundColor: '#8c030e',
                         },
                         headerTintColor: '#fff',
-                        headerRight: () => (
-                            <Avatar source={{ uri: "https://github.com/iagob2.png" }} />
-                        ),
+                        headerRight: renderAvatar,
                     }}
                     drawerContent={(props) => <DrawerContent {...props} />}
                 >
