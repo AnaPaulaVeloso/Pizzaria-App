@@ -1,16 +1,17 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, KeyboardAvoidingView, ImageSourcePropType } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
+import { API_IMAGENS_PIZZA_SALGADA, API_IMAGENS_PIZZA_DOCE } from '../../../service/config';
 
 export default function ResultadoScreen() {
   const { predicao } = useLocalSearchParams();
   const pedido = JSON.parse(predicao as string);
 
   // Função para determinar qual imagem mostrar baseado no tipo
-  const getPizzaImage = () => {
+  const getPizzaImage = (): ImageSourcePropType => {
     if (pedido.tipo_predito.toLowerCase().includes('doce')) {
-      return require('../../../assets/pizza-doce.png');
+      return { uri: API_IMAGENS_PIZZA_DOCE };
     } else {
-      return require('../../../assets/pizza-salgada.png');
+      return { uri: API_IMAGENS_PIZZA_SALGADA };
     }
   };
 

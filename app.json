@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "bc3b1ee1-52e5-4877-ad9c-27430928af19"
+      }
+    },
+    "android": {
+      "package": "com.leonardorenner.pizzariaapp"
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { Atendente } from '../model/atendente';
 import { PedidoCompleto } from '../model/pedidoCompleto';
 import { API_BASE_URL, API_BASE_URL_ML } from './config';
 
-const DEFAULT_TIMEOUT = 10000; // 10 segundos
+const DEFAULT_TIMEOUT = 30000; // Aumentado para 30 segundos
 
 const fetchWithTimeout = async (url: string, options: RequestInit = {}) => {
     const controller = new AbortController();
@@ -13,6 +13,11 @@ const fetchWithTimeout = async (url: string, options: RequestInit = {}) => {
         const response = await fetch(url, {
             ...options,
             signal: controller.signal,
+            headers: {
+                ...options.headers,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
         });
         clearTimeout(timeout);
         return response;
@@ -20,6 +25,9 @@ const fetchWithTimeout = async (url: string, options: RequestInit = {}) => {
         clearTimeout(timeout);
         if (error.name === 'AbortError') {
             throw new Error('Tempo de requisição excedido. Verifique sua conexão.');
+        }
+        if (error.message.includes('Network request failed')) {
+            throw new Error('Erro de conexão. Verifique sua internet e tente novamente.');
         }
         throw error;
     }

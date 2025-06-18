@@ -1,7 +1,7 @@
 {
   "experiments": {
-  "newArchEnabled": true
-},
+    "newArchEnabled": true
+  },
   "expo": {
     "userInterfaceStyle": "automatic",
     "web": {
@@ -13,6 +13,23 @@
       "expo-font"
     ],
     "name": "pizzaria",
-    "slug": "pizzaria"
+    "slug": "pizzaria",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a452f175-bb1b-4839-b977-143d573e2503"
+      }
+    },
+    "android": {
+      "package": "com.leonardorenner.pizzaria",
+      "permissions": [],
+      "config": {
+        "usesCleartextTraffic": true
+      },
+      "allowBackup": true,
+      "networkSecurityConfig": {
+        "cleartextTrafficPermitted": true
+      }
+    }
   }
 }
