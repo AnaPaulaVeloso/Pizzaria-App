@@ -1,0 +1,62 @@
+[
+    {
+        "nome": "Alho",
+        "preco": "54.00",
+        "ingredientes": "Mucarela, alho frito",
+        "imagem": "media/pizza/zuchini_ao_pesto.jpeg"
+    },
+    {
+        "nome": "Brocolis",
+        "preco": "56.00",
+        "ingredientes": "Mucarela, brócolis",
+        "imagem": "media/pizza/pompeia.jpeg"
+    },
+    {
+        "nome": "Calabresa",
+        "preco": "54.00",
+        "ingredientes": "Mucarela, calabresa, cebola",
+        "imagem": "media/pizza/Pomodori.jpeg"
+    },
+    {
+        "nome": "Dois Queijos",
+        "preco": "56.00",
+        "ingredientes": "Mucarela, catupiry",
+        "imagem": "media/pizza/boulevard.jpeg"
+    },
+    {
+        "nome": "Frango Com Catupiry",
+        "preco": "60.00",
+        "ingredientes": "Mucarela, frango, catupiry",
+        "imagem": "media/pizza/corleone.jpeg"
+    },
+    {
+        "nome": "Marguerita",
+        "preco": "51.00",
+        "ingredientes": "Mucarela, tomate, margarida",
+        "imagem": "media/pizza/marguerita.jpeg"
+    },
+    {
+        "nome": "Napolitana",
+        "preco": "53.00",
+        "ingredientes": "Mucarela, parmesão, tomate",
+        "imagem": "media/pizza/portuguesa(2).jpeg"
+    },
+    {
+        "nome": "Portuguesa",
+        "preco": "59.00",
+        "ingredientes": "Presunto, ovos, cebola, palmito, mucarela",
+        "imagem": "media/pizza/portuguesa.jpeg"
+    },
+    {
+        "nome": "Quatro Queijos",
+        "preco": "63.00",
+        "ingredientes": "Mucarela, catupiry, gorgonzola, parmesão",
+        "imagem": "media/pizza/marguerita.jpeg"
+    },
+    {
+        "nome": "Pepperoni",
+        "preco": "68.00",
+        "ingredientes": "Mucarela, pepperoni",
+        "imagem": "media/pizza/Pomodori.jpeg"
+    }
+]

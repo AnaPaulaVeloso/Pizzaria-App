@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8002:8002" # Corrigido para mapear 8002 do host para 8002 do contêiner
+    volumes:
+      - .:/app
+

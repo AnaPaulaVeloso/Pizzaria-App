@@ -1,0 +1,72 @@
+[
+    {
+        "tipo": "simples",
+        "nome": "Carne",
+        "ingredientes": "Carne",
+        "preco": "9.99",
+        "imagem": "media/esfiha/carne.jpeg"
+    },
+    {
+        "tipo": "simples",
+        "nome": "Queijo",
+        "ingredientes": "Queijo",
+        "preco": "9.99",
+        "imagem": "media/esfiha/queijo.jpeg"
+    },
+    {
+        "tipo": "tradicional",
+        "nome": "Bacon",
+        "ingredientes": "Mucarela, bacon",
+        "preco": "11.99",
+        "imagem": "media/esfiha/bacon.jpeg"
+    },
+    {
+        "tipo": "tradicional",
+        "nome": "Brocolis",
+        "ingredientes": "Mucarela, brócolis",
+        "preco": "11.99",
+        "imagem": "media/esfiha/brocolis.jpeg"
+    },
+    {
+        "tipo": "tradicional",
+        "nome": "Frango Com Queijo",
+        "ingredientes": "Mucarela, frango",
+        "preco": "11.99",
+        "imagem": "media/esfiha/frango_com_catupiry.jpeg"
+    },
+    {
+        "tipo": "especiais",
+        "nome": "Frango Com Catupiry",
+        "ingredientes": "Tomate, orégano, frango, catupiry",
+        "preco": "12.99",
+        "imagem": "media/esfiha/frango_com_catupiry.jpeg"
+    },
+    {
+        "tipo": "especiais",
+        "nome": "Dois Queijos",
+        "ingredientes": "Mucarela, catupiry",
+        "preco": "12.99",
+        "imagem": "media/esfiha/delicia.jpeg"
+    },
+    {
+        "tipo": "premium",
+        "nome": "Boulevard",
+        "ingredientes": "Mucarela, presunto, palmito, bacon, catupiry, tomate, cebola",
+        "preco": "13.99",
+        "imagem": "media/esfiha/boulevard.jpeg"
+    },
+    {
+        "tipo": "doces_gourmet",
+        "nome": "Banana Com Canela",
+        "ingredientes": "Banana, canela",
+        "preco": "13.99",
+        "imagem": "media/esfiha/doces/banana_nevada.jpeg"
+    },
+    {
+        "tipo": "doces_gourmet",
+        "nome": "Chocolate",
+        "ingredientes": "Chocolate",
+        "preco": "13.99",
+        "imagem": "media/esfiha/doces/chocolate_com_granulado.jpeg"
+    }
+]

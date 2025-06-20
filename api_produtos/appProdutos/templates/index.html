@@ -1,0 +1,302 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Cadastro de Produtos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Cadastro de Produtos</h1>
+        <div class="nav-buttons">
+            <button id="mostrarPizza"><i class="fas fa-pizza-slice"></i> Cadastrar Pizza</button>
+            <button id="mostrarEsfiha"><i class="fas fa-bread-slice"></i> Cadastrar Esfiha</button>
+            <button id="mostrarBebida"><i class="fas fa-glass-cheers"></i> Cadastrar Bebida</button>
+            <a href="/adm" class="admin-button"><i class="fas fa-user-cog"></i> Área Administrativa</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Formulário de Cadastro de Pizzas -->
+        <section id="cadastroPizza" class="form-section">
+            <h2>Cadastro de Pizzas</h2>
+            <form>
+                <div class="form-group">
+                    <label for="pizza_nome">Nome da Pizza:</label>
+                    <input type="text" id="pizza_nome" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pizza_preco">Preço (R$):</label>
+                    <input type="number" step="0.01" id="pizza_preco" name="preco" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pizza_ingredientes">Ingredientes:</label>
+                    <textarea id="pizza_ingredientes" name="ingredientes" placeholder="Digite os ingredientes separados por vírgula"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="pizza_imagem">Imagem:</label>
+                    <input type="file" id="pizza_imagem" name="imagem" accept="image/*">
+                </div>
+
+                <button type="submit" id="btnCadastrarPizza"><i class="fas fa-save"></i> Cadastrar Pizza</button>
+            </form>
+        </section>
+
+        <!-- Formulário de Cadastro de Esfihas -->
+        <section id="cadastroEsfiha" class="form-section">
+            <h2>Cadastro de Esfihas</h2>
+            <form>
+                <div class="form-group">
+                    <label>Selecione o tipo de Esfiha:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="esfiha_simples" name="tipo" value="simples">
+                            <label for="esfiha_simples">Simples (R$ 9,99)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="esfiha_tradicional" name="tipo" value="tradicional">
+                            <label for="esfiha_tradicional">Tradicional (R$ 11,99)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="esfiha_especiais" name="tipo" value="especiais">
+                            <label for="esfiha_especiais">Especiais (R$ 12,99)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="esfiha_premium" name="tipo" value="premium">
+                            <label for="esfiha_premium">Premium (R$ 13,99)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="esfiha_doces_gourmet" name="tipo" value="doces_gourmet">
+                            <label for="esfiha_doces_gourmet">Doces Gourmet (R$ 13,99)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="esfiha_nome">Nome da Esfiha:</label>
+                    <input type="text" id="esfiha_nome" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="esfiha_ingredientes">Ingredientes:</label>
+                    <textarea id="esfiha_ingredientes" name="ingredientes" placeholder="Digite os ingredientes separados por vírgula"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="esfiha_imagem">Imagem:</label>
+                    <input type="file" id="esfiha_imagem" name="imagem" accept="image/*">
+                </div>
+
+                <button type="submit" id="btnCadastrarEsfiha"><i class="fas fa-save"></i> Cadastrar Esfiha</button>
+            </form>
+        </section>
+
+        <!-- Formulário de Cadastro de Bebidas -->
+        <section id="cadastroBebida" class="form-section">
+            <h2>Cadastro de Bebidas</h2>
+            <form>
+                <div class="form-group">
+                    <label for="bebida_nome">Nome da Bebida:</label>
+                    <input type="text" id="bebida_nome" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bebida_descricao">Descrição:</label>
+                    <textarea id="bebida_descricao" name="descricao" placeholder="Detalhe a bebida (tamanho, tipo, etc)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="bebida_preco">Preço (R$):</label>
+                    <input type="number" step="0.01" id="bebida_preco" name="preco" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bebida_imagem">Imagem:</label>
+                    <input type="file" id="bebida_imagem" name="imagem" accept="image/*">
+                </div>
+
+                <button type="submit" id="btnCadastrarBebida"><i class="fas fa-save"></i> Cadastrar Bebida</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sistema de Cadastro de Produtos - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        const pizzaForm = document.getElementById('cadastroPizza');
+        const esfihaForm = document.getElementById('cadastroEsfiha');
+        const bebidaForm = document.getElementById('cadastroBebida');
+        const mostrarPizzaBtn = document.getElementById('mostrarPizza');
+        const mostrarEsfihaBtn = document.getElementById('mostrarEsfiha');
+        const mostrarBebidaBtn = document.getElementById('mostrarBebida');
+
+        mostrarPizzaBtn.addEventListener('click', () => {
+            pizzaForm.style.display = 'block';
+            esfihaForm.style.display = 'none';
+            bebidaForm.style.display = 'none';
+            mostrarPizzaBtn.classList.add('active');
+            mostrarEsfihaBtn.classList.remove('active');
+            mostrarBebidaBtn.classList.remove('active');
+        });
+
+        mostrarEsfihaBtn.addEventListener('click', () => {
+            pizzaForm.style.display = 'none';
+            esfihaForm.style.display = 'block';
+            bebidaForm.style.display = 'none';
+            mostrarPizzaBtn.classList.remove('active');
+            mostrarEsfihaBtn.classList.add('active');
+            mostrarBebidaBtn.classList.remove('active');
+        });
+
+        mostrarBebidaBtn.addEventListener('click', () => {
+            pizzaForm.style.display = 'none';
+            esfihaForm.style.display = 'none';
+            bebidaForm.style.display = 'block';
+            mostrarPizzaBtn.classList.remove('active');
+            mostrarEsfihaBtn.classList.remove('active');
+            mostrarBebidaBtn.classList.add('active');
+        });
+
+        // Mostrar o formulário de pizza ao carregar
+        window.onload = () => {
+            pizzaForm.style.display = 'block';
+            esfihaForm.style.display = 'none';
+            bebidaForm.style.display = 'none';
+            mostrarPizzaBtn.classList.add('active');
+        };
+
+        // Funções para mostrar mensagens de sucesso ou erro
+        function mostrarMensagem(tipo, titulo, mensagem) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${tipo}`;
+            alertDiv.innerHTML = `
+                <div class="alert-header">
+                    <strong>${titulo}</strong>
+                    <span class="close-alert">&times;</span>
+                </div>
+                <div class="alert-body">${mensagem}</div>
+            `;
+            document.querySelector('main').prepend(alertDiv);
+            
+            // Remover alerta automaticamente após 5 segundos
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+            
+            // Permitir fechar manualmente
+            alertDiv.querySelector('.close-alert').addEventListener('click', () => {
+                alertDiv.remove();
+            });
+        }
+
+        // Enviar dados para cadastrar pizza
+        document.getElementById('btnCadastrarPizza').addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData();
+            formData.append("nome", document.getElementById("pizza_nome").value);
+            formData.append("preco", document.getElementById("pizza_preco").value);
+            formData.append("ingredientes", document.getElementById("pizza_ingredientes").value);
+            const imagem = document.getElementById("pizza_imagem").files[0];
+            if (imagem) {
+                formData.append("imagem", imagem);
+            }
+
+            try {
+                const response = await fetch('/api/cadastrar-pizza/', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    mostrarMensagem('success', 'Sucesso!', data.mensagem || 'Pizza cadastrada com sucesso!');
+                    document.querySelector('#cadastroPizza form').reset();
+                } else {
+                    mostrarMensagem('error', 'Erro!', 'Erro ao cadastrar pizza: ' + JSON.stringify(data));
+                }
+            } catch (error) {
+                mostrarMensagem('error', 'Erro!', 'Erro na requisição: ' + error.message);
+            }
+        });
+
+        // Enviar dados para cadastrar esfiha
+        document.getElementById('btnCadastrarEsfiha').addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData();
+            const tipo = document.querySelector('input[name="tipo"]:checked');
+            if (!tipo) {
+                mostrarMensagem('error', 'Erro!', 'Selecione um tipo de esfiha');
+                return;
+            }
+            
+            formData.append("tipo", tipo.value);
+            const tipoValor = tipo.value;
+            formData.append("preco", tipoValor === 'simples' ? '9.99' : tipoValor === 'tradicional' ? '11.99' : tipoValor === 'especiais' ? '12.99' : tipoValor === 'premium' ? '13.99' : '13.99');
+            formData.append("nome", document.getElementById("esfiha_nome").value);
+            formData.append("ingredientes", document.getElementById("esfiha_ingredientes").value);
+            const imagem = document.getElementById("esfiha_imagem").files[0];
+            if (imagem) {
+                formData.append("imagem", imagem);
+            }
+
+            try {
+                const response = await fetch('/api/cadastrar-esfiha/', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    mostrarMensagem('success', 'Sucesso!', data.mensagem || 'Esfiha cadastrada com sucesso!');
+                    document.querySelector('#cadastroEsfiha form').reset();
+                } else {
+                    mostrarMensagem('error', 'Erro!', 'Erro ao cadastrar esfiha: ' + JSON.stringify(data));
+                }
+            } catch (error) {
+                mostrarMensagem('error', 'Erro!', 'Erro na requisição: ' + error.message);
+            }
+        });
+
+        // Enviar dados para cadastrar bebida
+        document.getElementById('btnCadastrarBebida').addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData();
+            formData.append("nome", document.getElementById("bebida_nome").value);
+            formData.append("descricao", document.getElementById("bebida_descricao").value);
+            formData.append("preco", document.getElementById("bebida_preco").value);
+            const imagem = document.getElementById("bebida_imagem").files[0];
+            if (imagem) {
+                formData.append("imagem", imagem);
+            }
+
+            try {
+                const response = await fetch('/api/cadastrar-bebida/', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    mostrarMensagem('success', 'Sucesso!', data.mensagem || 'Bebida cadastrada com sucesso!');
+                    document.querySelector('#cadastroBebida form').reset();
+                } else {
+                    mostrarMensagem('error', 'Erro!', 'Erro ao cadastrar bebida: ' + JSON.stringify(data));
+                }
+            } catch (error) {
+                mostrarMensagem('error', 'Erro!', 'Erro na requisição: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

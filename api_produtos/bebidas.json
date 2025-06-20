@@ -1,0 +1,86 @@
+[
+  {
+    "nome": "REFRIGERANTE LATA",
+    "descricao": "Contém 350ml",
+    "preco": 6.00,
+    "imagem": "media/bebida/refrigerante-lata.jpeg"
+  },
+  {
+    "nome": "REFRIGERANTE 600 ML",
+    "descricao": "Contém açúcar",
+    "preco": 8.00,
+    "imagem": "media/bebida/refrigerante-600ml.jpeg"
+  },
+  {
+    "nome": "COCA COLA 600 ML",
+    "descricao": "Contém açúcar",
+    "preco": 9.00,
+    "imagem": "media/bebida/coca-600ml.jpeg"
+  },
+  {
+    "nome": "DEL VALE LATA",
+    "descricao": "Zero açúcar",
+    "preco": 7.00,
+    "imagem": "media/bebida/del-valle.jpeg"
+  },
+  {
+    "nome": "H2O LIMÃO/ LIMONETO",
+    "descricao": "Contém açúcar",
+    "preco": 7.00,
+    "imagem": "media/bebida/limoneto.jpeg"
+  },
+  {
+    "nome": "ÁGUA SEM GÁS",
+    "descricao": "Zero açúcar",
+    "preco": 5.00,
+    "imagem": "media/bebida/agua.jpeg"
+  },
+  {
+    "nome": "ÁGUA COM GÁS",
+    "descricao": "Zero açúcar",
+    "preco": 6.00,
+    "imagem": "media/bebida/agua-gas.jpeg"
+  },
+  {
+    "nome": "IMPÉRIO 600 ML GOLD",
+    "descricao": "Bebida alcoólica",
+    "preco": 16.00,
+    "imagem": "media/bebida/imperio-600ml-gold.jpeg"
+  },
+  {
+    "nome": "IMPÉRIO 600 ML LAGER",
+    "descricao": "Bebida alcoólica",
+    "preco": 15.00,
+    "imagem": "media/bebida/imperio-600-pilsen.jpeg"
+  },
+  {
+    "nome": "IMPÉRIO 600 ML PILSEN",
+    "descricao": "Bebida alcoólica",
+    "preco": 13.00,
+    "imagem": "media/bebida/imperio-600-pilsen.jpeg"
+  },
+  {
+    "nome": "IMPÉRIO LAGER LONG NECK",
+    "descricao": "Bebida alcoólica",
+    "preco": 9.00,
+    "imagem": "media/bebida/imperio-long.jpeg"
+  },
+  {
+    "nome": "IMPÉRIO GOLD LONG NECK",
+    "descricao": "Bebida alcoólica",
+    "preco": 9.00,
+    "imagem": "media/bebida/imperio-long.jpeg"
+  },
+  {
+    "nome": "IMPÉRIO PILSEN LONG NECK",
+    "descricao": "Bebida alcoólica",
+    "preco": 8.00,
+    "imagem": "media/bebida/imperio-600-pilsen.jpeg"
+  },
+  {
+    "nome": "IMPÉRIO PILSEN LATA",
+    "descricao": "Zero Alcool",
+    "preco": 7.00,
+    "imagem": "media/bebida/imperio-lata.jpeg"
+  }
+]

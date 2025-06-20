@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8001:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/sistema
+    depends_on:
+      db:
+        condition: service_healthy # <-- ADICIONE ISSO AQUI
+      # Remove 'db' da linha depends_on: - db se você o moveu para cá
+
+  db:
+    image: postgres:16
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=sistema
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/ # <--- ADICIONE ESTA LINHA
+    healthcheck: # <-- ADICIONE ESTA SEÇÃO AQUI
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sistema"] # Verifica se o DB está pronto
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s # Dê um tempo extra para o DB iniciar antes de verificar
+    # A URL no healthcheck pode ser mais simples se o seu banco de dados tiver outro nome:
+    # test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+
+
+volumes:
+  postgres_data:

@@ -1,0 +1,440 @@
+/* Variáveis CSS para padronização de cores */
+:root {
+    --primary-color: #ffa500; /* Laranja mais vibrante */
+    --primary-dark: #e69500;
+    --secondary-color: #222;
+    --bg-color: #121212;
+    --bg-section: #1e1e1e;
+    --text-color: #f5f5f5;
+    --text-muted: #aaa;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --transition: all 0.3s ease;
+}
+
+/* Reset e estilos globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header e navegação */
+header {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Botões */
+button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 18px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button.active {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Seções principais */
+main {
+    flex: 1;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+section {
+    background-color: var(--bg-section);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--box-shadow);
+}
+
+section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* Formulários */
+form {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 0.8rem;
+}
+
+label {
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
+    display: block;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.2);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.radio-group {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+input[type="file"] {
+    padding: 10px;
+    background-color: #333;
+    border-radius: var(--border-radius);
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    justify-self: start;
+    padding: 12px 24px;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Listas de itens (para página adm) */
+ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+ul li {
+    background-color: #292929;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+ul li img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
+
+.item-info {
+    margin-bottom: 1rem;
+}
+
+.item-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+}
+
+.item-category {
+    background-color: rgba(255, 165, 0, 0.2);
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.item-price {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.item-description {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.item-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.edit-button {
+    background-color: #4a6da7;
+    color: white;
+}
+
+.delete-button {
+    background-color: #d9534f;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #3a5b8c;
+}
+
+.delete-button:hover {
+    background-color: #c9302c;
+}
+
+/* Formulário de edição */
+.edit-form {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #333;
+    border-radius: var(--border-radius);
+    display: grid;
+    gap: 0.8rem;
+}
+
+.edit-form button {
+    padding: 8px 15px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Mensagens de alerta */
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.2);
+    border-left: 4px solid #28a745;
+}
+
+.alert-error {
+    background-color: rgba(220, 53, 69, 0.2);
+    border-left: 4px solid #dc3545;
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.close-alert {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+/* Alerta personalizado */
+.custom-alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-content {
+    background-color: var(--bg-section);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 450px;
+    box-shadow: var(--box-shadow);
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+}
+
+.alert-header h5 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.close-button {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.alert-body {
+    padding: 1rem;
+}
+
+.alert-footer {
+    padding: 1rem;
+    border-top: 1px solid #333;
+    text-align: right;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    display: none;
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* Classes de utilidade */
+.hidden {
+    display: none !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    ul {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Botão admin na página inicial */
+.admin-button {
+    margin-top: 0.5rem;
+    background-color: #4a6da7;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.admin-button:hover {
+    background-color: #3a5b8c;
+    transform: translateY(-2px);
+}
